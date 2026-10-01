@@ -23,6 +23,8 @@ Abre la presentación y usa estas teclas:
 - **N**: notas de la ponente.
 - **R**: volver al inicio.
 
+**Sin internet:** `public/descargas/` tiene cada presentación en un solo archivo HTML que se abre con doble clic. Sirve como copia de seguridad para el día del evento. Para regenerarlos: `BASE_PATH=/ npm run build && npm run standalone`.
+
 En el móvil se avanza tocando la mitad derecha o izquierda de la pantalla. Para sacar un PDF de las diapositivas, usa *Imprimir → Guardar como PDF*: cada diapositiva sale en su propia página.
 
 ## Qué tienes que cambiar tú
