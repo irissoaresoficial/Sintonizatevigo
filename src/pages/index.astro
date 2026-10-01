@@ -340,7 +340,8 @@ const info = [
   /* ── Experiencia ────────────────────────── */
   .exp { padding: clamp(48px, 6vw, 80px) var(--gutter) clamp(96px, 12vw, 168px); }
   .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: clamp(40px, 7vw, 120px); align-items: start; }
-  .sticky { position: sticky; top: 48px; }
+  /* Solo fija con dos columnas: en una columna el programa le pasaría por encima. */
+  @media (min-width: 1000px) { .sticky { position: sticky; top: 48px; } }
   .agenda { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
   .agenda li { display: grid; grid-template-columns: 72px 1fr; gap: 20px; padding: 26px 0; border-bottom: 1px solid var(--line); }
   .agenda .t { font-size: 15px; font-weight: 500; color: var(--muted-2); padding-top: 6px; font-variant-numeric: tabular-nums; }
