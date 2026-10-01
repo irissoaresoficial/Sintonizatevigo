@@ -1,8 +1,7 @@
 name: Publicar en GitHub Pages
 
+# La web se publica en Vercel. Este workflow (GitHub Pages) queda solo en manual.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

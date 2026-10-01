@@ -39,7 +39,10 @@ Las fotos de los testimonios del Día 2 son huecos marcados en `design/Sintoniza
 
 ## Publicación
 
-Cada `push` a `main` publica la web en GitHub Pages con [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Solo hay que activarlo una vez: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+La web está en **Vercel** (https://sintonizatevigo.vercel.app) y cada `push` a `main` la vuelve a publicar sola.
+
+- Presentaciones: `/presentaciones/`, `/presentaciones/dia-1/` y `/presentaciones/dia-2/`. Las direcciones cortas `/dia-1` y `/dia-2` redirigen a ellas.
+- Como alternativa queda [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) para GitHub Pages, que se lanza a mano.
 
 ## Desarrollo
 
