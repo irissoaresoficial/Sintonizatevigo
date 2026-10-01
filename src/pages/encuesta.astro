@@ -1,0 +1,170 @@
+---
+// Encuesta de diagnóstico · una hoja A4 imprimible.
+// El PDF se genera con `npm run pdf` → public/encuesta-sintonizate-vigo.pdf
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+
+const satisfaccion = [
+  ['Salud física y energía vital', 'Vitalidad, hidratación, descanso'],
+  ['Salud emocional y mental', 'Paz interior, gestión del estrés'],
+  ['Salud financiera y libertad', 'Ingresos, capacidad de ahorro / inversión'],
+  ['Tiempo libre y estilo de vida', 'Flexibilidad, conciliación'],
+];
+const enfoque = ['Salud física / Vitalidad', 'Salud emocional / Paz mental', 'Salud financiera / Generar nuevos ingresos', 'Disponer de más tiempo libre y flexibilidad'];
+const proposito = [
+  'Buscar inspiración y herramientas para mi bienestar personal.',
+  'Aprender a gestionar mi energía y liberar bloqueos / estrés.',
+  'Conocer nuevas oportunidades o vehículos para aumentar mis ingresos.',
+  'Mejorar la salud y calidad de vida de mi familia.',
+];
+const vehiculo = ['Sí, estoy totalmente satisfecho/a.', 'No, estoy buscando activamente nuevas alternativas o negocios.', 'No, pero no sé por dónde empezar.'];
+---
+<Base title="Sintonízate Vigo — Cuestionario de diagnóstico" bg="#E9E9EC">
+  <Fragment slot="head"><meta name="robots" content="noindex" /></Fragment>
+
+  <div class="sheet">
+    <header class="top">
+      <div class="brand">
+        <Logo size="7.4mm" supSize="1.7mm" supGap="0.6mm" />
+        <span class="meta"><span class="dot"></span>Prosperidad 360° · Vigo</span>
+      </div>
+      <h1>Cuestionario de diagnóstico <span class="grey">y propósito</span></h1>
+      <p class="intro">Nos alegra tenerte aquí. Por favor, tómate 2 minutos para completar este formulario antes de comenzar. <span class="grey">Tus respuestas nos ayudarán a darte la mejor experiencia posible hoy.</span></p>
+    </header>
+
+    <section class="card">
+      <h2><span class="num">01</span>Datos de contacto</h2>
+      <div class="lines">
+        <label class="line full"><span>Nombre y apellidos</span><i></i></label>
+        <label class="line"><span>Teléfono (WhatsApp)</span><i></i></label>
+        <label class="line"><span>Correo electrónico</span><i></i></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="h-row">
+        <h2><span class="num">02</span>Diagnóstico de satisfacción personal</h2>
+        <span class="legend"><b>1</b> Muy insatisfecho <span class="sep">·</span> <b>5</b> Totalmente satisfecho</span>
+      </div>
+      <p class="q">Evalúa del 1 al 5 tu nivel actual de satisfacción en cada área.</p>
+      <div class="rows">
+        {satisfaccion.map(([t, s]) => (
+          <div class="row">
+            <span class="area"><span class="area-t">{t}</span><span class="area-s">{s}</span></span>
+            <span class="scale">{[1, 2, 3, 4, 5].map((n) => <span class="c">{n}</span>)}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">03</span>Enfoque y prioridades</h2>
+      <p class="q">De las áreas anteriores, ¿cuál es la principal que te gustaría transformar o mejorar a corto plazo?</p>
+      <ul class="opts two">{enfoque.map((o) => <li><span class="box round"></span>{o}</li>)}</ul>
+    </section>
+
+    <section class="card">
+      <div class="h-row">
+        <h2><span class="num">04</span>Propósito de la conferencia</h2>
+        <span class="legend">Puedes marcar más de una</span>
+      </div>
+      <p class="q">¿Cuál es tu objetivo principal al asistir hoy a esta charla?</p>
+      <ul class="opts two">
+        {proposito.map((o) => <li><span class="box"></span>{o}</li>)}
+        <li class="other"><span class="box"></span>Otro: <i></i></li>
+      </ul>
+    </section>
+
+    <div class="pair">
+      <section class="card">
+        <h2><span class="num">05</span>Tu actividad actual</h2>
+        <p class="q">¿Sientes que tu actividad u ocupación actual te permite alcanzar la libertad financiera y el estilo de vida que deseas?</p>
+        <ul class="opts">{vehiculo.map((o) => <li><span class="box round"></span>{o}</li>)}</ul>
+      </section>
+      <section class="card dark">
+        <h2><span class="num">06</span>Tu momento</h2>
+        <p class="q">Del 1 al 10, ¿qué tan listo/a estás hoy para tomar acción y realizar un cambio significativo en tu vida?</p>
+        <div class="ten">{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => <span class="c">{n}</span>)}</div>
+        <div class="ramp"><span>Aún no</span><i></i><span>Listo/a ya</span></div>
+      </section>
+    </div>
+
+    <footer class="end"><span class="dot"></span>Gracias. Entrega este cuestionario al equipo antes de comenzar.</footer>
+  </div>
+</Base>
+
+<style is:global>
+  @page { size: A4; margin: 0; }
+  @media print { html, body { background: #fff !important; } }
+</style>
+
+<style>
+  .sheet {
+    --ink: #1D1D1F; --muted: #5E5E63; --muted-2: #86868B; --line: rgba(0,0,0,.14);
+    position: relative; width: 210mm; height: 297mm; margin: 0 auto; padding: 11mm 12mm 9mm;
+    display: flex; flex-direction: column; gap: 3.2mm; overflow: hidden; color: var(--ink);
+    background:
+      radial-gradient(70mm 60mm at 100% 0%, rgba(255,59,48,.16), rgba(255,59,48,0) 70%),
+      radial-gradient(90mm 80mm at 0% 55%, rgba(150,160,190,.20), rgba(255,255,255,0) 70%),
+      radial-gradient(80mm 70mm at 100% 100%, rgba(200,190,230,.22), rgba(255,255,255,0) 70%),
+      #F5F5F7;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  @media screen { .sheet { margin: 24px auto; box-shadow: 0 30px 80px rgba(20,20,40,.12); } }
+  .grey { color: var(--muted-2); }
+  .dot { display: inline-block; flex: none; width: 1.9mm; height: 1.9mm; border-radius: 50%; background: var(--red); }
+
+  .top { display: flex; flex-direction: column; gap: 2.4mm; padding-bottom: 1mm; }
+  .brand { display: flex; justify-content: space-between; align-items: center; }
+  .meta { display: flex; align-items: center; gap: 2mm; font-size: 8.5pt; font-weight: 500; color: var(--muted-2); }
+  h1 { margin: 2.5mm 0 0; font-size: 22pt; font-weight: 300; letter-spacing: -0.04em; line-height: 1.05; }
+  .intro { margin: 0; font-size: 9.2pt; font-weight: 300; line-height: 1.45; color: var(--ink); max-width: 165mm; }
+
+  .card {
+    border-radius: 4.5mm; padding: 3.6mm 4.4mm; display: flex; flex-direction: column; gap: 2mm;
+    background: linear-gradient(160deg, rgba(255,255,255,.92), rgba(255,255,255,.66));
+    border: 0.25mm solid rgba(255,255,255,.9);
+    box-shadow: 0 0 0 0.2mm rgba(0,0,0,.06), 0 3mm 8mm rgba(20,20,40,.06);
+  }
+  h2 { margin: 0; display: flex; align-items: baseline; gap: 2.2mm; font-size: 11pt; font-weight: 400; letter-spacing: -0.02em; white-space: nowrap; }
+  .num { font-size: 8pt; font-weight: 500; color: var(--red); font-variant-numeric: tabular-nums; }
+  .h-row { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .legend { font-size: 7.5pt; color: var(--muted-2); white-space: nowrap; }
+  .legend b { font-weight: 500; color: var(--ink); }
+  .legend .sep { margin: 0 1mm; }
+  .q { margin: 0; font-size: 8.6pt; font-weight: 300; line-height: 1.4; color: var(--muted); }
+
+  .lines { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 6mm; margin-top: 1mm; }
+  .line { display: flex; align-items: flex-end; gap: 3mm; font-size: 8.6pt; font-weight: 300; color: var(--muted); }
+  .line.full { grid-column: 1 / -1; }
+  .line span { white-space: nowrap; }
+  .line i, .other i { flex: 1; height: 5.5mm; border-bottom: 0.25mm solid rgba(0,0,0,.28); }
+
+  .rows { display: flex; flex-direction: column; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 4mm; padding: 1.7mm 0; border-top: 0.2mm solid var(--line); }
+  .row:first-child { border-top: 0; }
+  .area { display: flex; flex-direction: column; gap: .4mm; }
+  .area-t { font-size: 9.2pt; font-weight: 400; }
+  .area-s { font-size: 7.6pt; font-weight: 300; color: var(--muted-2); }
+  .scale { display: flex; gap: 1.6mm; padding: 1mm; border-radius: 999px; background: rgba(0,0,0,.04); border: 0.2mm solid rgba(0,0,0,.08); }
+  .c { width: 6.4mm; height: 6.4mm; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 7.6pt; font-weight: 400; color: var(--muted-2); background: #fff; border: 0.25mm solid rgba(0,0,0,.18); font-variant-numeric: tabular-nums; }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 3.2mm; }
+  .opts { list-style: none; margin: 0.5mm 0 0; padding: 0; display: flex; flex-direction: column; gap: 1.7mm; }
+  .opts.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.7mm 6mm; }
+  .opts li { display: flex; align-items: flex-start; gap: 2.2mm; font-size: 8.6pt; font-weight: 300; line-height: 1.35; }
+  .box { flex: none; width: 3.6mm; height: 3.6mm; margin-top: .2mm; border-radius: 1mm; border: 0.3mm solid rgba(0,0,0,.4); background: #fff; }
+  .box.round { border-radius: 50%; }
+  .opts .other { align-items: flex-end; }
+  .opts .other .box { align-self: flex-start; }
+
+  .card.dark { position: relative; overflow: hidden; color: #F5F5F7; border-color: transparent;
+    background: radial-gradient(60mm 40mm at 100% 0%, rgba(255,59,48,.35), rgba(255,59,48,0) 70%), #1D1D1F; box-shadow: 0 3mm 8mm rgba(20,20,40,.14); }
+  .card.dark .q { color: #A1A1A6; }
+  .ten { display: flex; justify-content: space-between; margin-top: auto; padding-top: 1mm; }
+  .ten .c { width: 6.6mm; height: 6.6mm; font-size: 8pt; color: #F5F5F7; background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.28); }
+  .ramp { display: flex; align-items: center; gap: 3mm; font-size: 7.6pt; color: #A1A1A6; }
+  .ramp i { flex: 1; height: 0.5mm; border-radius: 1mm; background: linear-gradient(90deg, #5E5E63, #FF3B30); }
+
+  .end { margin-top: auto; display: flex; align-items: center; gap: 2.2mm; font-size: 8.4pt; font-weight: 300; color: var(--muted); }
+</style>

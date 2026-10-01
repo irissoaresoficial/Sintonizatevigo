@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Sintonízate Vigo — ¿Cuánto te está costando no cambiar?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500&family=DM+Sans:opsz,wght@9..40,300;9..40,600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>html,body{background:#FFFFFF !important;color:#1D1D1F}html{scroll-behavior:smooth}*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit;text-decoration:none}a:hover{color:inherit}button,input{font-family:inherit}input::placeholder{color:#AEAEB2}</style>
+</helmet>
+<div style="position:relative;background:#FFFFFF;color:#1D1D1F">
+
+  <section id="top" style="position:relative;height:100vh;min-height:660px;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden">
+    <div style="position:absolute;inset:0;z-index:0;background:radial-gradient(45% 55% at 85% 10%,rgba(255,59,48,.14),rgba(255,59,48,0) 70%),radial-gradient(50% 60% at 5% 90%,rgba(170,178,200,.35),rgba(255,255,255,0) 70%),linear-gradient(180deg,#FFFFFF,#F5F5F7)"></div>
+    
+
+    <header style="position:relative;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding:20px clamp(20px,4vw,64px)">
+      <a href="#top" data-in="soft" data-d="0.05" style="justify-self:start;display:flex;align-items:baseline;font-family:'DM Sans',sans-serif;font-size:22px;letter-spacing:-0.045em;line-height:1;color:#1D1D1F"><span style="font-weight:600">sinto</span><span style="font-weight:300">nízate</span><sup style="font-size:7px;font-weight:600;letter-spacing:.06em;align-self:flex-start;margin-left:3px;color:#FF3B30">VIGO</sup></a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <nav data-in="soft" data-d="0.15" style="display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px;background:rgba(227,227,225,.55);border:1px solid rgba(0,0,0,.12);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%)">
+          <a href="#experiencia" style="height:34px;padding:0 16px;border-radius:999px;display:flex;align-items:center;font-size:13.5px;font-weight:400;color:#2C2C2E;transition:background .25s" style-hover="background:rgba(0,0,0,.1)">Experiencia</a>
+          <a href="#ponentes" style="height:34px;padding:0 16px;border-radius:999px;display:flex;align-items:center;font-size:13.5px;font-weight:400;color:#2C2C2E;transition:background .25s" style-hover="background:rgba(0,0,0,.1)">Ponentes</a>
+          <a href="#info" style="height:34px;padding:0 16px;border-radius:999px;display:flex;align-items:center;font-size:13.5px;font-weight:400;color:#2C2C2E;transition:background .25s" style-hover="background:rgba(0,0,0,.1)">Información</a>
+        </nav>
+      </sc-if>
+      <a href="#inscripcion" data-in="soft" data-d="0.25" style="justify-self:end;grid-column:3;height:38px;padding:0 18px;border-radius:999px;display:flex;align-items:center;gap:10px;background:#1D1D1F;color:#FFFFFF;font-size:13.5px;font-weight:500;white-space:nowrap;transition:background .25s" style-hover="background:#0B0B0C"><span style="width:7px;height:7px;border-radius:50%;background:#FF3B30"></span>Reserva tu plaza</a>
+    </header>
+
+    <main style="position:relative;z-index:1;display:flex;align-items:flex-end;padding:0 clamp(20px,4vw,64px) clamp(36px,6vh,72px)">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:28px;max-width:1200px;width:100%">
+        <span data-in="soft" data-d="0.3" style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:400;color:#2C2C2E"><span style="width:8px;height:8px;border-radius:50%;background:#FF3B30"></span>Evento · Vigo · Raquel Rodríguez e Iris Soares</span>
+        <h1 style="margin:0;font-weight:200;font-size:clamp(46px,7.4vw,128px);line-height:.98;letter-spacing:-0.055em;color:#1D1D1F">
+          <span style="display:block;overflow:hidden;padding-bottom:.06em"><span data-in="mask" data-d="0.4" style="display:block">¿Cuánto te está costando</span></span>
+          <span style="display:block;overflow:hidden;padding-bottom:.06em"><span data-in="mask" data-d="0.55" style="display:block;font-weight:400">no cambiar<span style="color:#FF3B30">?</span></span></span>
+        </h1>
+        <div style="width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:28px">
+          <p data-in="soft" data-d="0.75" style="margin:0;max-width:520px;color:#5E5E63;font-size:clamp(17px,1.3vw,21px);font-weight:300;line-height:1.5"><span style="color:#1D1D1F">Tu salud, tus emociones y tu dinero están más conectados de lo que imaginas.</span> Un evento para mirarlos de frente y decidir.</p>
+          <div data-in="soft" data-d="0.9" style="display:flex;flex-wrap:wrap;gap:12px">
+            <a href="#inscripcion" style="flex:none;white-space:nowrap;height:54px;padding:0 26px;border-radius:999px;display:flex;align-items:center;gap:12px;background:#1D1D1F;color:#FFFFFF;font-size:16px;font-weight:500;transition:background .25s" style-hover="background:#0B0B0C">Reserva tu plaza gratis <span style="width:26px;height:26px;border-radius:50%;background:#FF3B30;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px">→</span></a>
+            <a href="#experiencia" style="flex:none;white-space:nowrap;height:54px;padding:0 24px;border-radius:999px;display:flex;align-items:center;background:rgba(227,227,225,.55);border:1px solid rgba(0,0,0,.16);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);color:#1D1D1F;font-size:16px;font-weight:400;transition:border-color .25s" style-hover="border-color:rgba(0,0,0,.45)">Qué vas a vivir</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;padding:22px clamp(20px,4vw,64px) 28px;border-top:1px solid rgba(0,0,0,.1);font-size:14px;font-weight:400;color:#5E5E63">
+      <span data-in="soft" data-d="1.0" style="display:flex;gap:12px"><span style="color:#AEAEB2">01</span>Salud física</span>
+      <span data-in="soft" data-d="1.08" style="display:flex;gap:12px"><span style="color:#AEAEB2">02</span>Salud emocional</span>
+      <span data-in="soft" data-d="1.16" style="display:flex;gap:12px"><span style="color:#AEAEB2">03</span>Salud financiera</span>
+      <span data-in="soft" data-d="1.24" style="display:flex;gap:12px;color:#1D1D1F"><span style="color:#FF3B30">=</span>Libertad</span>
+    </footer>
+  </section>
+
+  <section style="padding:clamp(96px,12vw,168px) clamp(20px,4vw,64px) clamp(64px,8vw,112px)">
+    <div style="max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,80px)">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <span style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500;color:#86868B"><span style="width:8px;height:8px;border-radius:50%;background:#FF3B30"></span>El concepto</span>
+        <h2 style="margin:0;font-weight:300;font-size:clamp(34px,4.6vw,72px);line-height:1.04;letter-spacing:-0.045em;max-width:1100px;text-wrap:balance">Tu salud, tus emociones y tu dinero <span style="color:#86868B">están más conectados de lo que imaginas.</span></h2>
+      </div>
+      <div style="position:relative;margin:0 calc(-1 * clamp(20px,4vw,64px));overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%)" onMouseEnter="{{ pauseTrack }}" onMouseLeave="{{ playTrack }}">
+        <div ref="{{ trackRef }}" style="display:flex;gap:16px;width:max-content;padding:4px 0">
+          <sc-for list="{{ banners }}" as="c" hint-placeholder-count="8">
+            <div style="flex:none;width:clamp(280px,26vw,380px);height:clamp(300px,24vw,340px);border-radius:28px;padding:32px;background:{{ c.bg }};color:{{ c.fg }};display:flex;flex-direction:column;justify-content:space-between">
+              <span style="font-size:14px;font-weight:500;color:{{ c.nc }}">{{ c.n }}</span>
+              <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:32px;font-weight:400;letter-spacing:-0.035em">{{ c.t }}</span><span style="font-size:17px;font-weight:300;line-height:1.5;color:{{ c.dc }};min-height:4.5em">{{ c.d }}</span></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section id="experiencia" style="padding:clamp(48px,6vw,80px) clamp(20px,4vw,64px) clamp(96px,12vw,168px)">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,7vw,120px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:22px;position:sticky;top:48px">
+        <span style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500;color:#86868B"><span style="width:8px;height:8px;border-radius:50%;background:#FF3B30"></span>La experiencia · 120 min</span>
+        <h2 style="margin:0;font-weight:300;font-size:clamp(34px,4.4vw,68px);line-height:1.04;letter-spacing:-0.045em;text-wrap:balance">No vienes a escuchar. <span style="color:#86868B">Vienes a cuestionarte.</span></h2>
+        <p style="margin:0;font-size:18px;font-weight:300;line-height:1.55;color:#5E5E63;max-width:440px">Preguntas, ejercicios por escrito, silencio y acción. El ritmo cambia cada 10–15 minutos.</p>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ agenda }}" as="m" hint-placeholder-count="7">
+          <div style="display:grid;grid-template-columns:72px 1fr;gap:20px;padding:26px 0;border-bottom:1px solid #E5E5EA"><span style="font-size:15px;font-weight:500;color:{{ m.c }};padding-top:6px;font-variant-numeric:tabular-nums">{{ m.t }}</span><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:24px;font-weight:400;letter-spacing:-0.03em">{{ m.title }}</span><span style="font-size:16px;font-weight:300;color:#5E5E63;line-height:1.5">{{ m.desc }}</span></div></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="ponentes" style="padding:0 clamp(20px,4vw,64px) clamp(96px,12vw,168px)">
+    <div style="max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,5vw,64px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <span style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500;color:#86868B"><span style="width:8px;height:8px;border-radius:50%;background:#FF3B30"></span>Ponentes</span>
+          <h2 style="margin:0;font-weight:300;font-size:clamp(34px,4.4vw,68px);line-height:1.04;letter-spacing:-0.045em">Dos voces. <span style="color:#86868B">Una misma pregunta.</span></h2>
+        </div>
+        <span style="font-size:17px;font-weight:300;color:#5E5E63;max-width:340px;line-height:1.5">Dos miradas complementarias sobre tu salud, tus emociones y tu dinero.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px">
+        <sc-for list="{{ ponentes }}" as="p" hint-placeholder-count="4">
+          <div style="border-radius:28px;overflow:hidden;background:#F2F2F5;display:flex;flex-direction:column">
+            <div style="position:relative;aspect-ratio:1/1;background:#E5E5EA"><image-slot id="{{ p.id }}" shape="rect" placeholder="{{ p.ph }}"></image-slot></div>
+            <div style="padding:22px 26px 26px;display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;font-weight:500;color:#86868B">{{ p.area }}</span><span style="font-size:28px;font-weight:400;letter-spacing:-0.035em">{{ p.name }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="info" style="padding:0 clamp(20px,4vw,64px) clamp(64px,8vw,112px)">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px">
+      <div style="border-radius:24px;padding:28px 30px;background:#F2F2F5;display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;font-weight:500;color:#86868B">Fecha</span><span style="font-size:24px;font-weight:300;letter-spacing:-0.03em">Por anunciar</span></div>
+      <div style="border-radius:24px;padding:28px 30px;background:#F2F2F5;display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;font-weight:500;color:#86868B">Hora</span><span style="font-size:24px;font-weight:300;letter-spacing:-0.03em">Por anunciar</span></div>
+      <div style="border-radius:24px;padding:28px 30px;background:#F2F2F5;display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;font-weight:500;color:#86868B">Lugar</span><span style="font-size:24px;font-weight:300;letter-spacing:-0.03em">Vigo · por anunciar</span></div>
+      <div style="border-radius:24px;padding:28px 30px;background:#F2F2F5;display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;font-weight:500;color:#86868B">Duración</span><span style="font-size:24px;font-weight:300;letter-spacing:-0.03em">2 horas</span></div>
+    </div>
+  </section>
+
+  <section id="inscripcion" style="padding:clamp(24px,4vw,48px) clamp(20px,4vw,64px) clamp(96px,12vw,160px)">
+    <div style="max-width:1320px;margin:0 auto;border-radius:36px;background:#1D1D1F;color:#F5F5F7;padding:clamp(28px,5vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,96px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <span style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500;color:#A1A1A6"><span style="width:8px;height:8px;border-radius:50%;background:#FF3B30"></span>Inscripción gratuita · Plazas limitadas</span>
+        <h2 style="margin:0;font-weight:300;font-size:clamp(38px,5vw,76px);line-height:1;letter-spacing:-0.05em;text-wrap:balance">Reserva tu sitio. <span style="color:#86868B">Lo demás lo decides allí.</span></h2>
+        <p style="margin:0;font-size:18px;font-weight:300;line-height:1.55;color:#A1A1A6;max-width:440px">Te confirmaremos la fecha, la hora y el lugar por WhatsApp.</p>
+      </div>
+      <div>
+        <sc-if value="{{ enviado }}" hint-placeholder-val="{{ false }}">
+          <div style="border-radius:28px;background:#0B0B0C;padding:40px;display:flex;flex-direction:column;gap:16px;min-height:360px;justify-content:center;box-shadow:0 20px 60px rgba(20,20,40,0.013)">
+            <span style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:#FF3B30"><span style="width:8px;height:8px;border-radius:50%;background:#FF3B30"></span>Plaza reservada</span>
+            <span style="font-size:clamp(34px,4vw,52px);font-weight:300;line-height:1.05;letter-spacing:-0.045em">Gracias, <span style="font-weight:400">{{ nombreCorto }}.</span></span>
+            <span style="font-size:18px;font-weight:300;line-height:1.5;color:#A1A1A6">Te escribiremos al {{ telefono }} con todos los detalles.</span>
+            <button onClick="{{ reset }}" style="align-self:flex-start;margin-top:8px;height:44px;padding:0 20px;border-radius:999px;background:#1D1D1F;border:none;color:#F5F5F7;font-size:15px;cursor:pointer">Inscribir a otra persona</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ noEnviado }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:400;color:#A1A1A6">Nombre y apellidos</span><input value="{{ nombre }}" onInput="{{ setNombre }}" placeholder="Tu nombre" style="height:54px;padding:0 18px;border-radius:14px;background:#0B0B0C;border:1px solid #3A3A3C;color:#F5F5F7;font-size:17px;font-weight:300;outline:none" style-focus="border-color:#F5F5F7"></label>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+              <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:400;color:#A1A1A6">Teléfono (WhatsApp)</span><input value="{{ telefono }}" onInput="{{ setTelefono }}" placeholder="+34 600 000 000" inputmode="tel" style="height:54px;padding:0 18px;border-radius:14px;background:#0B0B0C;border:1px solid #3A3A3C;color:#F5F5F7;font-size:17px;font-weight:300;outline:none" style-focus="border-color:#F5F5F7"></label>
+              <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:400;color:#A1A1A6">Correo electrónico</span><input value="{{ email }}" onInput="{{ setEmail }}" placeholder="tu@correo.com" type="email" style="height:54px;padding:0 18px;border-radius:14px;background:#0B0B0C;border:1px solid #3A3A3C;color:#F5F5F7;font-size:17px;font-weight:300;outline:none" style-focus="border-color:#F5F5F7"></label>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px">
+              <span style="font-size:14px;font-weight:400;color:#A1A1A6">¿Qué área te gustaría transformar primero?</span>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                <sc-for list="{{ areas }}" as="a" hint-placeholder-count="4">
+                  <button onClick="{{ a.pick }}" style="height:48px;padding:0 16px;border-radius:14px;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:400;cursor:pointer;border:1px solid {{ a.bd }};background:{{ a.bg }};color:#F5F5F7"><span style="width:8px;height:8px;border-radius:50%;background:{{ a.dot }}"></span>{{ a.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#FF3B30">{{ error }}</span></sc-if>
+            <button onClick="{{ enviar }}" style="margin-top:10px;height:60px;padding:0 10px 0 28px;border-radius:999px;display:flex;align-items:center;justify-content:space-between;background:#F5F5F7;color:#1D1D1F;border:none;font-size:17px;font-weight:500;cursor:pointer;transition:background .25s" style-hover="background:#FFFFFF">Reservar mi plaza <span style="width:40px;height:40px;border-radius:50%;background:#FF3B30;display:flex;align-items:center;justify-content:center;font-size:18px">→</span></button>
+            <span style="font-size:13px;font-weight:300;line-height:1.5;color:#86868B">Solo usaremos tus datos para enviarte la información del evento.</span>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding:0 clamp(20px,4vw,64px) 40px;max-width:1448px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(64px,9vw,120px)">
+    <p style="margin:0;font-size:clamp(28px,3.6vw,56px);font-weight:300;line-height:1.1;letter-spacing:-0.045em;max-width:1150px;text-wrap:balance">La prosperidad no empieza cuando ganas más dinero. <span style="color:#86868B">Empieza cuando dejas de aceptar como inevitable una vida que ya sabes que quieres cambiar.</span></p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;border-top:1px solid #E5E5EA;padding-top:28px">
+      <div style="display:flex;align-items:baseline;font-family:'DM Sans',sans-serif;font-size:clamp(52px,10vw,150px);letter-spacing:-0.055em;line-height:.85"><span style="font-weight:600">sinto</span><span style="font-weight:300">nízate</span><sup style="font-size:13px;font-weight:600;letter-spacing:.06em;align-self:flex-start;margin-left:6px;color:#FF3B30">VIGO</sup></div>
+      <span style="font-size:13px;font-weight:400;color:#86868B">Vigo · Fecha por anunciar</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { nombre: '', telefono: '', email: '', area: null, enviado: false, error: '', wide: true };
+  trackRef = React.createRef();
+  cards = [
+    { n: '01', t: 'Cuerpo', d: 'Sin energía física, todo cuesta más.' },
+    { n: '02', t: 'Emociones', d: 'Tus decisiones, hábitos y relaciones influyen en cómo actúas.' },
+    { n: '03', t: 'Dinero', d: 'Su falta limita tus opciones, tu tiempo y tus decisiones.' },
+    { n: '= las une', t: 'Libertad', d: '¿Para qué quieres prosperar realmente?', light: true },
+    { n: '04', t: 'Tiempo', d: '¿Cuánto de tu vida entregas para mantener tus ingresos?' },
+    { n: '05', t: 'Decisión', d: 'No quiero convencerte de nada. Decides tú.' },
+  ].map(c => ({ ...c, bg: c.light ? '#1D1D1F' : '#F2F2F5', fg: c.light ? '#F5F5F7' : '#1D1D1F', nc: c.light ? '#FF3B30' : '#86868B', dc: c.light ? '#A1A1A6' : '#5E5E63' }));
+  componentDidMount() {
+    this.onResize = () => this.setState({ wide: window.innerWidth >= 901 });
+    this.onResize(); window.addEventListener('resize', this.onResize);
+    setTimeout(() => { const t = this.trackRef.current; if (t) this.track = t.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(calc(-50% - 8px))' }], { duration: 38000, iterations: Infinity }); }, 50);
+    const K = {
+      soft: [{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }],
+      mask: [{ opacity: 0, transform: 'translateY(40%)' }, { opacity: 1, transform: 'none' }],
+    };
+    requestAnimationFrame(() => document.querySelectorAll('[data-in]').forEach(el => {
+      const kf = K[el.dataset.in]; if (!kf) return;
+      el.animate(kf, { duration: 1100, delay: parseFloat(el.dataset.d || .05) * 1000, easing: 'cubic-bezier(0.16,1,0.3,1)', fill: 'backwards' });
+    }));
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); this.track && this.track.cancel(); }
+  renderVals() {
+    const s = this.state;
+    const agenda = [
+      ['0:00', 'Romper el patrón', 'Puntúa tu vida del 1 al 10, con honestidad.'],
+      ['0:10', 'La rueda de la prosperidad', 'Cuerpo, emociones y dinero, unidos por la libertad.'],
+      ['0:25', 'Tu primer capital', 'Energía, descanso y hábitos: de saber lo que deberías hacer a hacerlo.'],
+      ['0:50', 'El precio de vivir en automático', 'Miedos, creencias sobre el dinero y patrones que se repiten.'],
+      ['1:15', 'Ingreso ≠ libertad', '¿Cuánto de tu vida entregas para mantener tus ingresos?'],
+      ['1:40', 'El momento de quiebre', 'Tú, dentro de tres años. ¿Qué tuvo que cambiar?'],
+      ['1:50', 'Tres caminos', 'No cambiar, cambiar tus hábitos o explorar nuevas oportunidades. Decides tú.'],
+    ];
+    const labels = ['Salud física', 'Salud emocional', 'Nuevos ingresos', 'Más tiempo libre'];
+    return {
+      ...s,
+      noEnviado: !s.enviado,
+      nombreCorto: s.nombre.trim().split(' ')[0] || '',
+      agenda: agenda.map(([t, title, desc], i) => ({ t, title, desc, c: i === 0 ? '#FF3B30' : '#86868B' })),
+      ponentes: [['ponente-raquel', 'Ponente', 'Raquel Rodríguez'], ['ponente-iris', 'Ponente · Escuela de Sabiduría 33', 'Iris Soares']].map(([id, area, name]) => ({ id, area, name, ph: 'Foto de ' + name })),
+      banners: [...this.cards, ...this.cards],
+      trackRef: this.trackRef,
+      pauseTrack: () => this.track && this.track.pause(),
+      playTrack: () => this.track && this.track.play(),
+      areas: labels.map(l => { const on = s.area === l; return { label: l, bg: on ? '#0B0B0C' : 'transparent', bd: on ? '#F5F5F7' : '#3A3A3C', dot: on ? '#FF3B30' : '#3A3A3C', pick: () => this.setState({ area: l }) }; }),
+      setNombre: e => this.setState({ nombre: e.target.value, error: '' }),
+      setTelefono: e => this.setState({ telefono: e.target.value, error: '' }),
+      setEmail: e => this.setState({ email: e.target.value, error: '' }),
+      enviar: () => {
+        if (!s.nombre.trim()) return this.setState({ error: 'Escribe tu nombre.' });
+        if (s.telefono.replace(/\D/g, '').length < 9) return this.setState({ error: 'Revisa el teléfono: necesitamos tu WhatsApp.' });
+        if (!/^\S+@\S+\.\S+$/.test(s.email)) return this.setState({ error: 'Revisa el correo electrónico.' });
+        this.setState({ enviado: true });
+      },
+      reset: () => this.setState({ nombre: '', telefono: '', email: '', area: null, enviado: false, error: '' }),
+    };
+  }
+}
+</script>
+</body>
+</html>

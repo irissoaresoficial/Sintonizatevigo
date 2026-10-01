@@ -1,0 +1,93 @@
+---
+import Base from './Base.astro';
+
+interface Props { title: string; html: string }
+const { title, html } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<Base title={title} bg="#FFFFFF">
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+    <style is:global>
+      html, body { height: 100%; overflow: hidden; }
+      deck-stage:not(:defined) { visibility: hidden; }
+      a { color: inherit; }
+    </style>
+    <!-- deck-anim escucha `slidechange`, así que va antes que deck-stage -->
+    <script is:inline src={`${base}js/deck-anim.js`}></script>
+  </Fragment>
+
+  <deck-stage width="1920" height="1080" no-rail set:html={html}></deck-stage>
+
+  <div class="ctrl" id="ctrl">
+    <a href={`${base}presentaciones/`} class="pill" title="Volver a las presentaciones">← Presentaciones</a>
+    <button type="button" class="pill" id="notes-btn" aria-pressed="false" title="Notas de la ponente (N)">Notas <kbd>N</kbd></button>
+    <button type="button" class="pill" id="fs-btn" title="Pantalla completa (F)">Pantalla completa <kbd>F</kbd></button>
+  </div>
+
+  <aside class="notes" id="notes" hidden aria-live="polite">
+    <span class="notes-label" id="notes-label"></span>
+    <p id="notes-text"></p>
+  </aside>
+
+  <script is:inline src={`${base}js/deck-stage.js`}></script>
+</Base>
+
+<script>
+  const ctrl = document.getElementById('ctrl')!;
+  const notes = document.getElementById('notes')!;
+  const notesBtn = document.getElementById('notes-btn')!;
+  const notesText = document.getElementById('notes-text')!;
+  const notesLabel = document.getElementById('notes-label')!;
+  const fsBtn = document.getElementById('fs-btn')!;
+
+  function showNotesFor(slide: Element | null) {
+    if (!slide) return;
+    notesLabel.textContent = slide.getAttribute('data-label') || '';
+    notesText.textContent = slide.getAttribute('data-speaker-notes') || 'Sin notas para esta diapositiva.';
+  }
+  document.addEventListener('slidechange', (e) => showNotesFor((e as CustomEvent).detail?.slide ?? null));
+
+  function toggleNotes() {
+    notes.hidden = !notes.hidden;
+    notesBtn.setAttribute('aria-pressed', String(!notes.hidden));
+    if (!notes.hidden) showNotesFor(document.querySelector('[data-deck-active]'));
+  }
+  function toggleFs() {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen?.();
+  }
+  notesBtn.addEventListener('click', toggleNotes);
+  fsBtn.addEventListener('click', toggleFs);
+  document.addEventListener('keydown', (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === 'n' || e.key === 'N') toggleNotes();
+    else if (e.key === 'f' || e.key === 'F') toggleFs();
+  });
+
+  // Los controles se ocultan si el ratón no se mueve, para no tapar la diapositiva.
+  let idle: number;
+  const wake = () => {
+    ctrl.classList.add('on');
+    clearTimeout(idle);
+    idle = window.setTimeout(() => { if (!ctrl.matches(':hover, :focus-within')) ctrl.classList.remove('on'); }, 2200);
+  };
+  document.addEventListener('pointermove', wake);
+  wake();
+</script>
+
+<style>
+  .ctrl { position: fixed; top: 16px; left: 16px; z-index: 2147483000; display: flex; gap: 8px; opacity: 0; transition: opacity .4s; pointer-events: none; }
+  .ctrl.on, .ctrl:focus-within { opacity: 1; pointer-events: auto; }
+  .pill { height: 36px; padding: 0 14px; border-radius: 999px; display: inline-flex; align-items: center; gap: 8px; font: 500 13px/1 var(--sans); color: #1D1D1F; background: rgba(255,255,255,.78); border: 1px solid rgba(0,0,0,.12); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); cursor: pointer; white-space: nowrap; }
+  .pill:hover { border-color: rgba(0,0,0,.35); }
+  .pill[aria-pressed='true'] { background: #1D1D1F; color: #F5F5F7; }
+  kbd { font: 500 11px/1 var(--sans); padding: 3px 6px; border-radius: 6px; background: rgba(127,127,127,.18); }
+  @media (max-width: 640px) { kbd { display: none; } .pill { padding: 0 12px; } }
+
+  .notes { position: fixed; left: 50%; bottom: 72px; transform: translateX(-50%); z-index: 2147483000; width: min(760px, calc(100vw - 32px)); max-height: 40vh; overflow: auto; padding: 18px 22px; border-radius: 20px; background: rgba(29,29,31,.92); color: #F5F5F7; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 20px 60px rgba(0,0,0,.25); }
+  .notes[hidden] { display: none; }
+  .notes-label { display: block; font-size: 12px; font-weight: 500; color: #FF3B30; margin-bottom: 6px; }
+  .notes p { margin: 0; font-size: 16px; font-weight: 300; line-height: 1.5; }
+  @media print { .ctrl, .notes { display: none !important; } }
+</style>

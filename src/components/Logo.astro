@@ -1,0 +1,15 @@
+---
+// Logotipo tipográfico: «sinto» negrita + «nízate» fino + VIGO en rojo como superíndice.
+interface Props { size: string; supSize: string; supGap?: string; lineHeight?: number; tracking?: string; class?: string }
+const { size, supSize, supGap = '3px', lineHeight = 1, tracking = '-0.045em', class: cls } = Astro.props;
+---
+<span class:list={['logo', cls]} style={`font-size:${size};line-height:${lineHeight};letter-spacing:${tracking}`} aria-label="Sintonízate Vigo" role="img">
+  <span class="b" aria-hidden="true">sinto</span><span class="l" aria-hidden="true">nízate</span><sup aria-hidden="true" style={`font-size:${supSize};margin-left:${supGap}`}>VIGO</sup>
+</span>
+
+<style>
+  .logo { display: inline-flex; align-items: baseline; font-family: var(--brand); color: inherit; }
+  .b { font-weight: 600; }
+  .l { font-weight: 300; }
+  sup { font-weight: 600; letter-spacing: .06em; align-self: flex-start; color: var(--red); line-height: 1; }
+</style>

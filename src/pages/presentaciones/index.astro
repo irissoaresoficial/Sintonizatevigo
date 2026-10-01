@@ -1,0 +1,125 @@
+---
+import Base from '../../layouts/Base.astro';
+import Logo from '../../components/Logo.astro';
+import dia1 from '../../decks/dia-1.html?raw';
+import dia2 from '../../decks/dia-2.html?raw';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const cover = (html: string) => html.slice(0, html.indexOf('</section>') + '</section>'.length);
+const count = (html: string) => (html.match(/<section/g) || []).length;
+
+const decks = [
+  { href: 'dia-1/', day: 'Día 1', name: 'Despertar', html: dia1, desc: 'Romper el patrón, la rueda de la prosperidad y los tres caminos.' },
+  { href: 'dia-2/', day: 'Día 2', name: 'Posibilidad', html: dia2, desc: 'Visión, herramientas, testimonios y formas de ingresos.' },
+];
+
+const m = `${base}marca/`;
+const material = [
+  { t: 'Encuesta de diagnóstico', d: 'PDF · A4 · 1 hoja para imprimir', href: `${base}encuesta-sintonizate-vigo.pdf`, dl: true },
+  { t: 'Encuesta (vista web)', d: 'Para revisarla o imprimirla desde el navegador', href: `${base}encuesta/` },
+  { t: 'Icono glass · oscuro', d: 'SVG', href: `${m}logos/sintonizate-vigo-icono-glass-oscuro.svg`, dl: true },
+  { t: 'Icono glass · oscuro', d: 'PNG · 1120 px', href: `${m}logos/sintonizate-vigo-icono-glass-oscuro.png`, dl: true },
+  { t: 'Icono glass · claro', d: 'SVG', href: `${m}logos/sintonizate-vigo-icono-glass-claro.svg`, dl: true },
+  { t: 'Icono glass · claro', d: 'PNG · 1120 px', href: `${m}logos/sintonizate-vigo-icono-glass-claro.png`, dl: true },
+  { t: 'Logotipo · negro', d: 'PNG transparente · 1760 px', href: `${m}logos/sintonizate-vigo-logotipo-negro.png`, dl: true },
+  { t: 'Logotipo · blanco', d: 'PNG transparente · 1760 px', href: `${m}logos/sintonizate-vigo-logotipo-blanco.png`, dl: true },
+  { t: 'Icono + logotipo · negro', d: 'PNG transparente · 1828 px', href: `${m}logos/sintonizate-vigo-lockup-negro.png`, dl: true },
+  { t: 'Icono + logotipo · blanco', d: 'PNG transparente · 1828 px', href: `${m}logos/sintonizate-vigo-lockup-blanco.png`, dl: true },
+  { t: 'Animación del logo · negro', d: 'AVI sin fondo · 520×130 · 19 MB', href: `${m}sintonizate-vigo-logo-negro.avi`, dl: true },
+  { t: 'Animación del logo · blanco', d: 'AVI sin fondo · 520×130 · 19 MB', href: `${m}sintonizate-vigo-logo-blanco.avi`, dl: true },
+];
+---
+<Base title="Sintonízate Vigo — Presentaciones">
+  <Fragment slot="head"><meta name="robots" content="noindex" /></Fragment>
+
+  <div class="page">
+    <header class="nav">
+      <a href={base}><Logo size="22px" supSize="7px" /></a>
+      <a href={base} class="back">Ver la landing</a>
+    </header>
+
+    <section class="head">
+      <span class="eyebrow"><span class="dot"></span>Presentaciones · Prosperidad 360°</span>
+      <h1>Las presentaciones. <span class="grey">Animadas y listas para proyectar.</span></h1>
+      <p class="lead">Ábrela, pulsa <kbd>F</kbd> para pantalla completa y avanza con las flechas o la barra espaciadora. <kbd>N</kbd> muestra las notas de la ponente.</p>
+    </section>
+
+    <section class="decks">
+      {decks.map((d) => (
+        <a href={d.href} class="deck">
+          <div class="thumb" aria-hidden="true"><div class="stage" set:html={cover(d.html)} /></div>
+          <div class="deck-meta">
+            <div class="deck-title"><span class="day">{d.day} · {count(d.html)} diapositivas</span><span class="name">{d.name}</span><span class="desc">{d.desc}</span></div>
+            <span class="play">Ver presentación <span class="arrow">→</span></span>
+          </div>
+        </a>
+      ))}
+    </section>
+
+    <section class="mat">
+      <div class="mat-head">
+        <span class="eyebrow"><span class="dot"></span>Material</span>
+        <h2>Encuesta y marca</h2>
+      </div>
+      <ul class="mat-list">
+        {material.map((x) => (
+          <li><a href={x.href} download={x.dl ? '' : undefined}><span class="mt">{x.t}</span><span class="md">{x.d}</span><span class="ic" aria-hidden="true">{x.dl ? '↓' : '→'}</span></a></li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Escala la portada real (1920×1080) al ancho de cada tarjeta.
+  const ro = new ResizeObserver((entries) => {
+    for (const e of entries) {
+      const stage = e.target.firstElementChild as HTMLElement;
+      stage.style.transform = `scale(${e.contentRect.width / 1920})`;
+    }
+  });
+  document.querySelectorAll('.thumb').forEach((t) => ro.observe(t));
+</script>
+
+<style>
+  .page { --pad: var(--gutter); padding: 0 var(--pad) 96px; max-width: 1448px; margin: 0 auto; background:
+    radial-gradient(40% 40% at 90% 0%, rgba(255,59,48,.08), rgba(255,255,255,0) 70%); }
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+  .back { height: 38px; padding: 0 18px; border-radius: 999px; display: flex; align-items: center; font-size: 13.5px; font-weight: 500; background: rgba(227,227,225,.55); border: 1px solid rgba(0,0,0,.12); transition: border-color .25s; }
+  .back:hover { border-color: rgba(0,0,0,.4); }
+  .dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
+  .grey { color: var(--muted-2); }
+  .eyebrow { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; color: var(--muted-2); }
+
+  .head { display: flex; flex-direction: column; gap: 22px; padding: clamp(48px, 8vw, 112px) 0 clamp(40px, 5vw, 64px); }
+  h1 { margin: 0; font-weight: 300; font-size: clamp(38px, 5vw, 76px); line-height: 1.02; letter-spacing: -0.05em; max-width: 1100px; text-wrap: balance; }
+  .lead { margin: 0; font-size: 18px; font-weight: 300; line-height: 1.6; color: var(--muted); max-width: 620px; }
+  kbd { font: 500 13px/1 var(--sans); padding: 3px 7px; border-radius: 6px; background: var(--card); border: 1px solid var(--line); color: var(--ink); }
+
+  .decks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 16px; }
+  .deck { border-radius: 28px; overflow: hidden; background: var(--card); display: flex; flex-direction: column; transition: transform .5s var(--ease-out), box-shadow .5s var(--ease-out); }
+  .deck:hover { transform: translateY(-4px); box-shadow: 0 30px 60px rgba(20,20,40,.1); }
+  .thumb { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #fff; border-bottom: 1px solid var(--line); }
+  .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; pointer-events: none; }
+  .stage :global(section) { width: 1920px; height: 1080px; }
+  .deck-meta { padding: 24px 28px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 18px; }
+  .deck-title { display: flex; flex-direction: column; gap: 6px; }
+  .day { font-size: 13px; font-weight: 500; color: var(--muted-2); }
+  .name { font-size: 32px; font-weight: 400; letter-spacing: -0.035em; }
+  .desc { font-size: 16px; font-weight: 300; color: var(--muted); line-height: 1.5; max-width: 380px; }
+  .play { height: 48px; padding: 0 8px 0 20px; border-radius: 999px; display: flex; align-items: center; gap: 12px; background: var(--ink); color: #fff; font-size: 15px; font-weight: 500; white-space: nowrap; }
+  .arrow { width: 32px; height: 32px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; transition: transform .35s var(--ease-out); }
+  .deck:hover .arrow { transform: translateX(3px); }
+
+  .mat { padding-top: clamp(72px, 9vw, 128px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .mat-head { display: flex; flex-direction: column; gap: 22px; }
+  h2 { margin: 0; font-weight: 300; font-size: clamp(32px, 4vw, 56px); letter-spacing: -0.045em; line-height: 1.04; }
+  .mat-list { list-style: none; margin: 0; padding: 0; }
+  .mat-list a { display: grid; grid-template-columns: 1fr auto 28px; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); transition: padding .3s var(--ease-out); }
+  .mat-list a:hover { padding-left: 6px; }
+  .mt { font-size: 18px; font-weight: 400; letter-spacing: -0.02em; }
+  .md { font-size: 14px; font-weight: 300; color: var(--muted-2); text-align: right; }
+  .ic { width: 28px; height: 28px; border-radius: 50%; background: var(--card); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .mat-list a:hover .ic { background: var(--red); color: #fff; }
+  @media (max-width: 520px) { .mat-list a { grid-template-columns: 1fr 28px; } .md { grid-column: 1; grid-row: 2; text-align: left; } .ic { grid-row: 1 / 3; grid-column: 2; } }
+</style>
