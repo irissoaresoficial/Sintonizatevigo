@@ -2,6 +2,7 @@
 // a fragmentos HTML independientes del runtime (src/decks/*.html).
 // Uso: npm run decks  — vuelve a ejecutarlo si cambias los .dc.html de design/.
 import { readFileSync, writeFileSync } from 'node:fs';
+import { applyEdits } from './deck-edits.mjs';
 
 const decks = [
   ['design/Sintonizate Vigo - Presentacion Dia 1 v7.dc.html', 'src/decks/dia-1.html'],
@@ -26,6 +27,8 @@ for (const [src, out] of decks) {
     (_, id, ph) =>
       `<div data-slot="${id}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:400;color:#AEAEB2;background:repeating-linear-gradient(135deg,rgba(0,0,0,.025) 0 2px,transparent 2px 14px)">${ph}</div>`,
   );
+
+  html = applyEdits(out.match(/(dia-\d)/)[1], html);
 
   if (/<image-slot|<sc-|\{\{/.test(html)) throw new Error(`Quedan restos del runtime en ${src}`);
   const n = (html.match(/<section/g) || []).length;

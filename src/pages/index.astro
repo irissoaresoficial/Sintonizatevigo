@@ -14,17 +14,17 @@ const ticker = [
 ];
 
 const rueda = [
-  { t: 'Cuerpo', d: 'Sin energía física, todo cuesta más.' },
-  { t: 'Emociones', d: 'Tus hábitos y relaciones influyen en cómo actúas.' },
-  { t: 'Dinero', d: 'Su falta puede limitar tu tiempo y tus opciones.' },
+  { t: 'Cuerpo' },
+  { t: 'Emociones' },
+  { t: 'Dinero' },
 ];
 
 const pasos = [
-  { t: 'La rueda', d: 'Puntúate del 1 al 10. Con honestidad.' },
-  { t: 'Tu cuerpo', d: 'Te cobra lo que hoy no le das.' },
-  { t: 'El miedo', d: 'También decide. Y casi siempre, por ti.' },
-  { t: '160 horas', d: '¿Eso es un sueldo o un precio?' },
-  { t: 'Es 2029', d: 'Tu yo de 2029 ya sabe lo que decidiste hoy.' },
+  'Una rueda pinchada [r]no llega lejos.[/r]',
+  'Tu cuerpo te cobra [r]lo que no le das.[/r]',
+  'El miedo [r]también decide.[/r]',
+  '¿Eso es un sueldo [r]o un precio?[/r]',
+  'Cierra los ojos. [r]Es 2029.[/r]',
 ];
 
 const areas = ['Salud física', 'Salud emocional', 'Nuevos ingresos', 'Más tiempo libre'];
@@ -57,7 +57,6 @@ const info = [
         <span class="line"><span class="in-up hl" style="--d:.64s">no cambiar?</span></span>
       </h1>
       <div class="hero-row">
-        <p class="in hero-sub" style="--d:.85s">Dos horas gratis en Vigo para mirar tu cuerpo, tus emociones y tu dinero.</p>
         <div class="in hero-ctas" style="--d:1s">
           <a href="#inscripcion" class="btn btn-ink">Reserva tu plaza gratis <span class="arrow" aria-hidden="true">→</span></a>
           <a href="#experiencia" class="btn btn-line">Qué vas a vivir</a>
@@ -79,9 +78,8 @@ const info = [
   <section class="sec sec-light meses">
     <div class="wrap split">
       <div class="col">
-        <span class="pill rv"><span class="dot" aria-hidden="true"></span>60 meses · Cada punto es un mes</span>
-        <h2 class="display h-xl rv" set:html={hl('60 meses más<br>de [r]lo mismo.[/r]')} />
-        <p class="sub rv">¿Qué pasaría si dentro de cinco años siguieras exactamente igual?</p>
+        <span class="pill rv"><span class="dot" aria-hidden="true"></span>5 años · 60 meses</span>
+        <h2 class="display h-lg rv" set:html={hl('¿Cuántas veces<br>más vas a hacer<br>[r]lo mismo?[/r]')} />
       </div>
       <div class="dots-wrap rv" aria-hidden="true">
         <div class="dots-legend"><span>Hoy</span><span class="red">Mes 60</span></div>
@@ -101,9 +99,9 @@ const info = [
       </div>
       <div class="rueda-grid">
         {rueda.map((r, i) => (
-          <article class="rcard rv" style={`--d:${i * .08}s`}><span class="rn">0{i + 1}</span><span class="rt">{r.t}</span><span class="rd">{r.d}</span></article>
+          <article class="rcard rv" style={`--d:${i * .08}s`}><span class="rn">0{i + 1}</span><span class="rt">{r.t}</span></article>
         ))}
-        <article class="rcard rcard-red rv" style="--d:.24s"><span class="rn">= las une</span><span class="rt">Libertad</span><span class="rd">Nadie quiere dinero. Quiere poder decir que no.</span></article>
+        <article class="rcard rcard-red rv" style="--d:.24s"><span class="rn">= las une</span><span class="rt">Libertad</span></article>
       </div>
     </div>
   </section>
@@ -114,11 +112,10 @@ const info = [
       <div class="col sticky">
         <span class="pill rv"><span class="dot" aria-hidden="true"></span>La experiencia · 120 minutos</span>
         <h2 class="display h-lg rv" set:html={hl('No vienes a escuchar.<br>Vienes a [r]cuestionarte.[/r]')} />
-        <p class="sub rv">Preguntas, ejercicios por escrito y silencio. Y al final, una decisión.</p>
       </div>
       <ol class="pasos">
         {pasos.map((p, i) => (
-          <li class="rv"><span class="pn">Paso {i + 1}</span><span class="pt">{p.t}</span><span class="pd">{p.d}</span></li>
+          <li class="rv"><span class="pn">Paso {i + 1}</span><span class="pt" set:html={hl(p)} /></li>
         ))}
       </ol>
     </div>
@@ -129,7 +126,6 @@ const info = [
     <div class="wrap">
       <span class="pill pill-red rv"><span class="dot dot-w" aria-hidden="true"></span>Tres caminos</span>
       <h2 class="display h-xxl rv" set:html={hl('Tres caminos.<br>[r]Decides tú.[/r]')} />
-      <p class="sub sub-red rv">En esta sesión nadie te vende nada. Conocerás posibilidades que quizá no conoces.</p>
     </div>
   </section>
 
@@ -141,7 +137,6 @@ const info = [
           <span class="pill rv"><span class="dot" aria-hidden="true"></span>Ponentes</span>
           <h2 class="display h-lg rv" set:html={hl('Dos voces.<br>Una [r]misma pregunta.[/r]')} />
         </div>
-        <p class="sub rv">Dos miradas sobre tu salud, tus emociones y tu dinero.</p>
       </div>
       <div class="speakers-grid">
         {ponentes.map((p) => (
@@ -173,7 +168,6 @@ const info = [
       <div class="col">
         <span class="pill pill-dark"><span class="dot" aria-hidden="true"></span>Inscripción gratuita · 120 min · Vigo</span>
         <h2 class="display h-lg" set:html={hl('La motivación dura 24 horas.<br>Una decisión, [r]años.[/r]')} />
-        <p class="sub sub-dark">Fecha, hora y lugar por anunciar. Te avisamos por WhatsApp.</p>
       </div>
       <div>
         <div class="done" id="done" hidden tabindex="-1">
@@ -201,7 +195,7 @@ const info = [
           <label class="visually-hidden" aria-hidden="true">Web<input name="web" tabindex="-1" autocomplete="off" /></label>
           <span class="error" id="error" role="alert"></span>
           <button type="submit" class="btn-submit" id="submit">Reservar mi plaza gratis <span class="arrow lg" aria-hidden="true">→</span></button>
-          <span class="legal">Solo usaremos tus datos para enviarte la información del evento.</span>
+          <span class="legal">Te confirmamos fecha, hora y lugar por WhatsApp. Solo usaremos tus datos para el evento.</span>
         </form>
       </div>
     </div>
@@ -211,7 +205,6 @@ const info = [
   <footer class="site-foot">
     <h2 class="display h-xl rv" set:html={hl('Lo inevitable<br>también era<br>[r]una decisión.[/r]')} />
     <div class="foot-row">
-      <p class="sub">La prosperidad empieza cuando dejas de aceptar una vida que quieres cambiar.</p>
       <Logo size="clamp(40px,7vw,96px)" icon />
     </div>
     <div class="foot-meta"><span>{evento.pie}</span><a href="#top">Volver arriba ↑</a></div>
@@ -309,7 +302,6 @@ const info = [
   .h-lg { font-size: clamp(42px, 6vw, 96px); }
   .h-xl { font-size: clamp(48px, 7.4vw, 124px); }
   .h-xxl { font-size: clamp(60px, 11vw, 190px); }
-  .sub { margin: 0; font-size: clamp(18px, 1.6vw, 24px); font-weight: 300; line-height: 1.4; color: #6E6E73; max-width: 560px; }
 
   .sec { padding: clamp(80px, 11vw, 160px) var(--gutter); position: relative; }
   .sec-light { background: radial-gradient(50% 50% at 92% 0%, rgba(255,59,48,.10), rgba(255,59,48,0) 70%), radial-gradient(50% 60% at 0% 100%, rgba(170,175,200,.22), rgba(255,255,255,0) 70%), #FFFFFF; color: var(--ink); }
@@ -349,7 +341,6 @@ const info = [
   .hero-main { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: clamp(22px, 3vw, 36px); padding: clamp(24px, 4vh, 48px) var(--gutter) clamp(40px, 7vh, 88px); max-width: 1448px; width: 100%; margin: 0 auto; }
   h1.display { font-size: clamp(58px, 11.4vw, 196px); line-height: .98; }
   .hero-row { width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 40px; }
-  .hero-sub { margin: 0; max-width: 520px; font-size: clamp(19px, 1.7vw, 25px); font-weight: 400; line-height: 1.4; color: #0B0B0C; }
   .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 
   .btn { flex: none; white-space: nowrap; height: 56px; border-radius: 999px; display: inline-flex; align-items: center; font-size: 16px; font-weight: 500; transition: transform .3s var(--ease-out), background .25s, border-color .25s; }
@@ -388,25 +379,22 @@ const info = [
   .rcard { min-height: clamp(170px, 20vw, 260px); border-radius: 28px; padding: 30px; display: flex; flex-direction: column; gap: 10px; background: linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.1); }
   .rn { font-family: 'Anton', sans-serif; letter-spacing: .06em; text-transform: uppercase; font-size: 15px; color: #86868B; margin-bottom: auto; }
   .rt { font-family: 'Anton', sans-serif; text-transform: uppercase; font-size: clamp(36px, 3.4vw, 52px); line-height: 1; letter-spacing: .01em; }
-  .rd { font-size: 17px; font-weight: 300; line-height: 1.45; color: #A1A1A6; }
   .rcard-red { background: #FF3B30; border-color: #FF3B30; box-shadow: 0 30px 80px rgba(255,59,48,.25); }
   .rcard-red .rn { color: #0B0B0C; }
-  .rcard-red .rd { color: #0B0B0C; font-weight: 400; }
 
   /* ── Experiencia ────────────────────────── */
   .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: clamp(40px, 7vw, 110px); align-items: start; }
   @media (min-width: 1000px) { .sticky { position: sticky; top: 48px; } }
   .pasos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-  .pasos li { display: grid; grid-template-columns: 96px 1fr; grid-template-rows: auto auto; column-gap: 20px; row-gap: 6px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+  .pasos li { display: grid; grid-template-columns: 96px 1fr; align-items: baseline; column-gap: 20px; padding: 28px 0; border-bottom: 1px solid var(--line); }
   .pasos li:first-child { border-top: 1px solid var(--line); }
-  .pn { grid-row: 1 / 3; padding-top: 8px; font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: .06em; font-size: 16px; color: var(--red); }
-  .pt { font-family: 'Anton', sans-serif; text-transform: uppercase; font-size: clamp(32px, 3.2vw, 48px); line-height: 1.02; letter-spacing: .01em; }
-  .pd { font-size: 18px; font-weight: 300; line-height: 1.45; color: #6E6E73; }
-  @media (max-width: 480px) { .pasos li { grid-template-columns: 1fr; } .pn { grid-row: auto; padding-top: 0; } }
+  .pn { font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: .06em; font-size: 16px; color: var(--red); }
+  .pt { font-family: 'Anton', sans-serif; text-transform: uppercase; font-size: clamp(30px, 3.4vw, 52px); line-height: 1.03; letter-spacing: .004em; text-wrap: balance; }
+  .pt :global(.hl) { color: var(--red); }
+  @media (max-width: 480px) { .pasos li { grid-template-columns: 1fr; row-gap: 6px; } }
 
   /* ── Decides ────────────────────────────── */
   .decides .wrap { display: flex; flex-direction: column; align-items: flex-start; gap: clamp(22px, 3vw, 36px); }
-  .sub-red { color: #0B0B0C; font-weight: 400; max-width: 620px; }
 
   /* ── Ponentes ───────────────────────────── */
   .speakers-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(40px, 5vw, 64px); }
@@ -430,7 +418,6 @@ const info = [
   /* ── Inscripción ────────────────────────── */
   .signup { padding: 0 var(--gutter) clamp(80px, 10vw, 140px); background: #FFFFFF; }
   .signup-box { border-radius: 36px; padding: clamp(28px, 5vw, 80px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(40px, 6vw, 96px); align-items: start; }
-  .sub-dark { color: #A1A1A6; }
 
   .form { display: flex; flex-direction: column; gap: 14px; }
   .form[hidden], .done[hidden] { display: none; }

@@ -17,6 +17,7 @@
     "astro": "^7.3.5"
   },
   "devDependencies": {
+    "node-html-parser": "^9.0.4",
     "playwright": "^1.63.0"
   }
 }

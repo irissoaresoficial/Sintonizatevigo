@@ -55,5 +55,5 @@ npm run build && npm run pdf   # regenera la encuesta en PDF (requiere Playwrigh
 ```
 
 - Hecha con Astro, sin frameworks de cliente. Las fuentes (Inter con eje óptico y DM Sans) están alojadas en la propia web: no hay llamadas a Google Fonts.
-- Las diapositivas salen tal cual de los prototipos de Claude Design (`design/`). `scripts/extract-decks.mjs` las separa de ese entorno, y `public/js/deck-stage.js` y `public/js/deck-anim.js` se encargan de la navegación, las animaciones y las partículas.
+- Las diapositivas salen de los prototipos de Claude Design (`design/`). Los cambios de contenido (frases quitadas y titulares nuevos) están listados en `scripts/deck-edits.mjs`; cada frase quitada pasa a las notas de la ponente. `scripts/extract-decks.mjs` las separa de ese entorno, y `public/js/deck-stage.js` y `public/js/deck-anim.js` se encargan de la navegación, las animaciones y las partículas.
 - `design/` guarda los archivos originales del diseño y la conversación (`chat-diseno.md`) como referencia.
