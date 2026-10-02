@@ -9,8 +9,8 @@ const cover = (html: string) => html.slice(0, html.indexOf('</section>') + '</se
 const count = (html: string) => (html.match(/<section/g) || []).length;
 
 const decks = [
-  { href: 'dia-1/', day: 'Día 1', name: 'Despertar', html: dia1, desc: 'Romper el patrón, la rueda de la prosperidad y los tres caminos.' },
-  { href: 'dia-2/', day: 'Día 2', name: 'Posibilidad', html: dia2, desc: 'Visión, herramientas, testimonios y formas de ingresos.' },
+  { href: 'dia-1/', day: 'Día 1', name: 'Despertar', html: dia1, desc: 'Romper el patrón. Cinco pasos. Tres caminos. Decides tú.' },
+  { href: 'dia-2/', day: 'Día 2', name: 'Posibilidad', html: dia2, desc: 'Visión, herramientas, testimonios, ingresos y criterio.' },
 ];
 
 const m = `${base}marca/`;
@@ -19,14 +19,15 @@ const material = [
   { t: 'Presentación Día 2 · archivo', d: 'HTML · se abre sin internet · 0,5 MB', href: `${base}descargas/sintonizate-vigo-presentacion-dia-2.html`, dl: true },
   { t: 'Encuesta de diagnóstico', d: 'PDF · A4 · 1 hoja para imprimir', href: `${base}encuesta-sintonizate-vigo.pdf`, dl: true },
   { t: 'Encuesta (vista web)', d: 'Para revisarla o imprimirla desde el navegador', href: `${base}encuesta/` },
-  { t: 'Icono glass · oscuro', d: 'SVG', href: `${m}logos/sintonizate-vigo-icono-glass-oscuro.svg`, dl: true },
-  { t: 'Icono glass · oscuro', d: 'PNG · 1120 px', href: `${m}logos/sintonizate-vigo-icono-glass-oscuro.png`, dl: true },
-  { t: 'Icono glass · claro', d: 'SVG', href: `${m}logos/sintonizate-vigo-icono-glass-claro.svg`, dl: true },
-  { t: 'Icono glass · claro', d: 'PNG · 1120 px', href: `${m}logos/sintonizate-vigo-icono-glass-claro.png`, dl: true },
-  { t: 'Logotipo · negro', d: 'PNG transparente · 1760 px', href: `${m}logos/sintonizate-vigo-logotipo-negro.png`, dl: true },
-  { t: 'Logotipo · blanco', d: 'PNG transparente · 1760 px', href: `${m}logos/sintonizate-vigo-logotipo-blanco.png`, dl: true },
-  { t: 'Icono + logotipo · negro', d: 'PNG transparente · 1828 px', href: `${m}logos/sintonizate-vigo-lockup-negro.png`, dl: true },
-  { t: 'Icono + logotipo · blanco', d: 'PNG transparente · 1828 px', href: `${m}logos/sintonizate-vigo-lockup-blanco.png`, dl: true },
+  { t: 'Icono · claro', d: 'SVG', href: `${m}logos/sintonizate-vigo-icono-claro.svg`, dl: true },
+  { t: 'Icono · claro', d: 'PNG · 1040 px', href: `${m}logos/sintonizate-vigo-icono-claro.png`, dl: true },
+  { t: 'Icono · oscuro', d: 'SVG', href: `${m}logos/sintonizate-vigo-icono-oscuro.svg`, dl: true },
+  { t: 'Icono · oscuro', d: 'PNG · 1040 px', href: `${m}logos/sintonizate-vigo-icono-oscuro.png`, dl: true },
+  { t: 'Logo completo · negro', d: 'PNG transparente · 2884 px', href: `${m}logos/sintonizate-vigo-logo-negro.png`, dl: true },
+  { t: 'Logo completo · blanco', d: 'PNG transparente · 1371 px', href: `${m}logos/sintonizate-vigo-logo-blanco.png`, dl: true },
+  { t: 'Logotipo · negro', d: 'PNG transparente · 1808 px', href: `${m}logos/sintonizate-vigo-wordmark-negro.png`, dl: true },
+  { t: 'Logotipo · blanco', d: 'PNG transparente · 1808 px', href: `${m}logos/sintonizate-vigo-wordmark-blanco.png`, dl: true },
+  { t: 'Logotipo · sobre rojo', d: 'PNG · 1656 px', href: `${m}logos/sintonizate-vigo-wordmark-sobre-rojo.png`, dl: true },
   { t: 'Animación del logo · negro', d: 'AVI sin fondo · 520×130 · 19 MB', href: `${m}sintonizate-vigo-logo-negro.avi`, dl: true },
   { t: 'Animación del logo · blanco', d: 'AVI sin fondo · 520×130 · 19 MB', href: `${m}sintonizate-vigo-logo-blanco.avi`, dl: true },
 ];
@@ -36,13 +37,13 @@ const material = [
 
   <div class="page">
     <header class="nav">
-      <a href={base}><Logo size="22px" supSize="7px" /></a>
+      <a href={base}><Logo size="24px" icon /></a>
       <a href={base} class="back">Ver la landing</a>
     </header>
 
     <section class="head">
       <span class="eyebrow"><span class="dot"></span>Presentaciones · Prosperidad 360°</span>
-      <h1>Las presentaciones. <span class="grey">Animadas y listas para proyectar.</span></h1>
+      <h1>Las presentaciones. <span class="red">Listas para proyectar.</span></h1>
       <p class="lead">Ábrela, pulsa <kbd>F</kbd> para pantalla completa y avanza con las flechas o la barra espaciadora. <kbd>N</kbd> muestra las notas de la ponente.</p>
     </section>
 
@@ -91,10 +92,11 @@ const material = [
   .back:hover { border-color: rgba(0,0,0,.4); }
   .dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
   .grey { color: var(--muted-2); }
-  .eyebrow { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; color: var(--muted-2); }
+  .eyebrow { display: flex; align-items: center; gap: 12px; font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: .06em; font-size: 16px; font-weight: 400; color: #6E6E73; }
 
   .head { display: flex; flex-direction: column; gap: 22px; padding: clamp(48px, 8vw, 112px) 0 clamp(40px, 5vw, 64px); }
-  h1 { margin: 0; font-weight: 300; font-size: clamp(38px, 5vw, 76px); line-height: 1.02; letter-spacing: -0.05em; max-width: 1100px; text-wrap: balance; }
+  h1 { margin: 0; font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: clamp(44px, 7vw, 112px); line-height: 1.03; letter-spacing: .004em; max-width: 1200px; text-wrap: balance; }
+  .red { color: var(--red); }
   .lead { margin: 0; font-size: 18px; font-weight: 300; line-height: 1.6; color: var(--muted); max-width: 620px; }
   kbd { font: 500 13px/1 var(--sans); padding: 3px 7px; border-radius: 6px; background: var(--card); border: 1px solid var(--line); color: var(--ink); }
 
@@ -107,7 +109,7 @@ const material = [
   .deck-meta { padding: 24px 28px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 18px; }
   .deck-title { display: flex; flex-direction: column; gap: 6px; }
   .day { font-size: 13px; font-weight: 500; color: var(--muted-2); }
-  .name { font-size: 32px; font-weight: 400; letter-spacing: -0.035em; }
+  .name { font-family: 'Anton', sans-serif; text-transform: uppercase; font-size: 40px; font-weight: 400; letter-spacing: .01em; line-height: 1.05; }
   .desc { font-size: 16px; font-weight: 300; color: var(--muted); line-height: 1.5; max-width: 380px; }
   .play { height: 48px; padding: 0 8px 0 20px; border-radius: 999px; display: flex; align-items: center; gap: 12px; background: var(--ink); color: #fff; font-size: 15px; font-weight: 500; white-space: nowrap; }
   .arrow { width: 32px; height: 32px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; transition: transform .35s var(--ease-out); }
@@ -115,7 +117,7 @@ const material = [
 
   .mat { padding-top: clamp(72px, 9vw, 128px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: clamp(32px, 6vw, 96px); align-items: start; }
   .mat-head { display: flex; flex-direction: column; gap: 22px; }
-  h2 { margin: 0; font-weight: 300; font-size: clamp(32px, 4vw, 56px); letter-spacing: -0.045em; line-height: 1.04; }
+  h2 { margin: 0; font-family: 'Anton', sans-serif; text-transform: uppercase; font-weight: 400; font-size: clamp(36px, 5vw, 72px); letter-spacing: .004em; line-height: 1.03; }
   .mat-list { list-style: none; margin: 0; padding: 0; }
   .mat-list a { display: grid; grid-template-columns: 1fr auto 28px; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); transition: padding .3s var(--ease-out); }
   .mat-list a:hover { padding-left: 6px; }

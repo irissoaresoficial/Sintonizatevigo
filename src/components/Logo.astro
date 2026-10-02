@@ -1,15 +1,26 @@
 ---
-// Logotipo tipográfico: «sinto» negrita + «nízate» fino + VIGO en rojo como superíndice.
-interface Props { size: string; supSize: string; supGap?: string; lineHeight?: number; tracking?: string; class?: string }
-const { size, supSize, supGap = '3px', lineHeight = 1, tracking = '-0.045em', class: cls } = Astro.props;
+// Logotipo v7: icono (opcional) + «SINTONÍZATE» en Anton + etiqueta «VIGO» vertical.
+// tone: 'ink' (sobre claro), 'paper' (sobre oscuro), 'onred' (sobre rojo: etiqueta negra).
+interface Props { size: string; tone?: 'ink' | 'paper' | 'onred'; icon?: boolean; class?: string }
+const { size, tone = 'ink', icon = false, class: cls } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const iconSrc = `${base}marca/logos/sintonizate-vigo-icono-${tone === 'paper' ? 'oscuro' : 'claro'}.svg`;
 ---
-<span class:list={['logo', cls]} style={`font-size:${size};line-height:${lineHeight};letter-spacing:${tracking}`} aria-label="Sintonízate Vigo" role="img">
-  <span class="b" aria-hidden="true">sinto</span><span class="l" aria-hidden="true">nízate</span><sup aria-hidden="true" style={`font-size:${supSize};margin-left:${supGap}`}>VIGO</sup>
+<span class:list={['logo', tone, cls]} style={`--s:${size}`} role="img" aria-label="Sintonízate Vigo">
+  {icon && <img src={iconSrc} alt="" width="40" height="40" class="ic" aria-hidden="true" />}
+  <span class="wm" aria-hidden="true"><span class="word">Sintonízate</span><span class="tag">Vigo</span></span>
 </span>
 
 <style>
-  .logo { display: inline-flex; align-items: baseline; font-family: var(--brand); color: inherit; }
-  .b { font-weight: 600; }
-  .l { font-weight: 300; }
-  sup { font-weight: 600; letter-spacing: .06em; align-self: flex-start; color: var(--red); line-height: 1; }
+  .logo { display: inline-flex; align-items: center; font-family: 'Anton', sans-serif; text-transform: uppercase; line-height: .86; }
+  .ic { width: calc(var(--s) * 1.7); height: calc(var(--s) * 1.7); margin-right: calc(var(--s) * .35); flex: none; }
+  .wm { display: inline-flex; align-items: stretch; }
+  .word { font-size: var(--s); letter-spacing: .01em; }
+  .tag { align-self: stretch; display: flex; align-items: center; margin-left: calc(var(--s) * .11);
+    padding: 0 calc(var(--s) * .09); border-radius: calc(var(--s) * .075); font-size: calc(var(--s) * .425); letter-spacing: .06em;
+    writing-mode: vertical-rl; transform: rotate(180deg); background: #FF3B30; color: #FFFFFF; }
+  .ink .word { color: #0B0B0C; }
+  .paper .word { color: #F5F5F7; }
+  .onred .word { color: #FFFFFF; }
+  .onred .tag { background: #0B0B0C; }
 </style>

@@ -6,8 +6,8 @@ La web del evento: landing con inscripción, las dos presentaciones animadas, la
 |---|---|
 | `/` | Landing del Día 1 con el formulario de inscripción (va a Google Sheets) |
 | `/presentaciones/` | Índice de presentaciones y material descargable |
-| `/presentaciones/dia-1/` | Día 1 · Despertar, 27 diapositivas animadas |
-| `/presentaciones/dia-2/` | Día 2 · Posibilidad, 10 diapositivas animadas |
+| `/presentaciones/dia-1/` | Día 1 · Despertar (v7), 25 diapositivas animadas |
+| `/presentaciones/dia-2/` | Día 2 · Posibilidad (v5), 15 diapositivas animadas |
 | `/encuesta/` | Encuesta de diagnóstico, una hoja A4 |
 | `/encuesta-sintonizate-vigo.pdf` | La encuesta en PDF, lista para imprimir |
 | `/marca/` | Logos (PNG y SVG) y la animación del logo en AVI sin fondo |
@@ -35,7 +35,7 @@ Todo está en [`src/site.ts`](src/site.ts):
 - **Fotos de las ponentes:** copia cada imagen (cuadrada, de al menos 900×900) a `public/img/` y escribe su nombre de archivo en `foto`.
 - **`SHEETS_ENDPOINT`:** la URL del formulario. Sigue [`apps-script/LEEME.md`](apps-script/LEEME.md). Mientras esté vacía, el formulario avisa de que las inscripciones aún no están activas.
 
-Las fotos de los testimonios del Día 2 son huecos marcados en `design/Sintonizate Vigo - Presentacion Dia 2 v4.dc.html`. Busca `image-slot`.
+Las fotos de los testimonios del Día 2 son huecos marcados en `design/Sintonizate Vigo - Presentacion Dia 2 v5.dc.html`. Busca `image-slot`.
 
 ## Publicación
 

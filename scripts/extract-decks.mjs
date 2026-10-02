@@ -4,8 +4,8 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 
 const decks = [
-  ['design/Sintonizate Vigo - Presentacion Dia 1 v4.dc.html', 'src/decks/dia-1.html'],
-  ['design/Sintonizate Vigo - Presentacion Dia 2 v4.dc.html', 'src/decks/dia-2.html'],
+  ['design/Sintonizate Vigo - Presentacion Dia 1 v7.dc.html', 'src/decks/dia-1.html'],
+  ['design/Sintonizate Vigo - Presentacion Dia 2 v5.dc.html', 'src/decks/dia-2.html'],
 ];
 
 for (const [src, out] of decks) {
